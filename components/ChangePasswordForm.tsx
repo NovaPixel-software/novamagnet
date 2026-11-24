@@ -33,7 +33,7 @@ export default function ChangePasswordForm({ onDone }: { onDone?: () => void }) 
   };
 
   const input =
-    'h-10 w-full rounded-lg border border-surface-container-high bg-surface-container-low px-3 text-body-lg outline-none focus:border-tertiary-container focus:ring-[3px] focus:ring-tertiary-container/20';
+    'h-10 w-full rounded-lg border border-surface-container-high bg-surface-container-low px-3 text-body-lg outline-none focus:border-primary-container focus:ring-[3px] focus:ring-primary-container/20';
 
   return (
     <form onSubmit={submit} className="space-y-3">

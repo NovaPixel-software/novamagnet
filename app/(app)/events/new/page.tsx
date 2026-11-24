@@ -51,7 +51,7 @@ export default function NewEventPage() {
             maxLength={32}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Priya & Arun Wedding"
-            className={`h-11 w-full rounded-lg border bg-surface-container-low px-4 text-body-lg text-navy outline-none transition focus:border-tertiary-container focus:ring-[3px] focus:ring-tertiary-container/20 ${error ? 'border-error' : 'border-surface-container-high'}`}
+            className={`h-11 w-full rounded-lg border bg-surface-container-low px-4 text-body-lg text-navy outline-none transition focus:border-primary-container focus:ring-[3px] focus:ring-primary-container/20 ${error ? 'border-error' : 'border-surface-container-high'}`}
           />
           {error && (
             <p role="alert" className="mt-1.5 text-body-md text-error">

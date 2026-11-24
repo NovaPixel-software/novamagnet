@@ -30,8 +30,9 @@ function SheetArt() {
 /** The sign-in page: the brand panel on the left on large screens, the form on the right. */
 export default function LoginShell({ notice }: { notice?: string }) {
   return (
-    <div className="grid min-h-screen bg-white lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
-      <aside className="relative hidden overflow-hidden bg-[#0e1a33] text-white lg:flex lg:flex-col lg:justify-between lg:p-12 xl:p-16">
+    // The page is exactly one screen tall: nothing scrolls unless the screen is too small for the form itself.
+    <div className="grid min-h-[100dvh] bg-white lg:h-[100dvh] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:overflow-hidden">
+      <aside className="relative hidden overflow-hidden bg-[#0e1a33] text-white lg:flex lg:flex-col lg:justify-between lg:p-10 xl:p-14 lg:[@media(max-height:760px)]:p-8">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
@@ -42,15 +43,15 @@ export default function LoginShell({ notice }: { notice?: string }) {
 
         <BrandBar dark size={38} alwaysName className="relative" />
 
-        <div className="relative my-12">
-          <h1 className="max-w-[560px] font-display text-[40px] font-extrabold leading-[1.12] tracking-[-0.03em] xl:text-[44px]">
+        <div className="relative my-6 min-h-0">
+          <h1 className="max-w-[560px] font-display text-[36px] font-extrabold leading-[1.12] tracking-[-0.03em] xl:text-[44px] 2xl:max-w-[640px] 2xl:text-[54px] [@media(max-height:760px)]:text-[32px]">
             Photo magnet sheets, <span className="text-[#aab4ff]">print-ready</span> in minutes.
           </h1>
-          <p className="mt-4 max-w-[500px] text-[16px] leading-6 text-white/65">
+          <p className="mt-4 max-w-[500px] text-[16px] leading-6 text-white/65 2xl:max-w-[580px] 2xl:text-[18px] 2xl:leading-7 [@media(max-height:760px)]:mt-3 [@media(max-height:760px)]:text-[15px]">
             Built for print shops and event stalls. Lay out the photos, add names, and print a perfect sheet every time.
           </p>
-          <div className="mt-10 grid items-center gap-10 xl:grid-cols-[minmax(0,1fr)_230px]">
-            <ul className="space-y-5">
+          <div className="mt-10 grid items-center gap-10 xl:grid-cols-[minmax(0,1fr)_230px] 2xl:grid-cols-[minmax(0,1fr)_290px] [@media(max-height:760px)]:mt-6">
+            <ul className="space-y-5 [@media(max-height:760px)]:space-y-3">
               {FEATURES.map((f) => (
                 <li key={f.title} className="flex gap-4">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10 ring-1 ring-white/15">
@@ -63,7 +64,8 @@ export default function LoginShell({ notice }: { notice?: string }) {
                 </li>
               ))}
             </ul>
-            <div className="hidden xl:block">
+            {/* the drawn sheet only where there is room for it */}
+            <div className="hidden xl:[@media(min-height:700px)]:block">
               <SheetArt />
             </div>
           </div>
@@ -72,14 +74,17 @@ export default function LoginShell({ notice }: { notice?: string }) {
         <p className="relative text-[13px] text-white/50">© {new Date().getFullYear()} {COMPANY_NAME}</p>
       </aside>
 
-      <main className="flex min-h-screen flex-col px-5 py-8 sm:px-10">
-        <div className="lg:hidden">
-          <BrandBar size={34} alwaysName />
-        </div>
-        <div className="flex flex-1 items-center justify-center py-10">
+      {/* the form in the middle of its side; on a phone or tablet the logo sits right above it */}
+      <main className="relative flex min-h-[100dvh] flex-col items-center justify-center px-5 pb-12 pt-6 sm:px-10 lg:min-h-0 lg:overflow-y-auto lg:py-8">
+        <div className="w-full max-w-[400px]">
+          <div className="mb-8 lg:hidden [@media(max-height:700px)]:mb-5">
+            <BrandBar size={34} alwaysName />
+          </div>
           <LoginForm notice={notice} />
         </div>
-        <p className="text-center text-[12px] text-outline lg:hidden">© {new Date().getFullYear()} {COMPANY_NAME}</p>
+        <p className="absolute inset-x-0 bottom-4 text-center text-[12px] text-outline lg:hidden">
+          © {new Date().getFullYear()} {COMPANY_NAME}
+        </p>
       </main>
     </div>
   );

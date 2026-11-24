@@ -7,7 +7,7 @@ import { DEFAULT_LABEL, LABEL_COLORS, LABEL_FONTS, MAX_LABEL_CHARS, RIBBON_STYLE
 import type { NameLabel, RibbonStyle } from '@/lib/types';
 
 const input =
-  'h-10 w-full rounded-lg border border-surface-container-high bg-surface-container-low px-3 text-body-lg outline-none focus:border-tertiary-container focus:ring-[3px] focus:ring-tertiary-container/20';
+  'h-10 w-full rounded-lg border border-surface-container-high bg-surface-container-low px-3 text-body-lg outline-none focus:border-primary-container focus:ring-[3px] focus:ring-primary-container/20';
 
 const colourOptions = LABEL_COLORS.map((o) => ({
   value: o.value,
@@ -216,7 +216,7 @@ function Dropdown<T extends string>({
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="flex h-10 w-full items-center gap-2 rounded-lg border border-surface-container-high bg-surface-container-low px-3 text-body-lg text-navy outline-none focus:border-tertiary-container focus:ring-[3px] focus:ring-tertiary-container/20"
+        className="flex h-10 w-full items-center gap-2 rounded-lg border border-surface-container-high bg-surface-container-low px-3 text-body-lg text-navy outline-none focus:border-primary-container focus:ring-[3px] focus:ring-primary-container/20"
       >
         {current.lead}
         <span className="flex-1 truncate text-left">{current.label}</span>

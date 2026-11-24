@@ -46,7 +46,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
       <h1 className="font-display text-[30px] font-extrabold tracking-[-0.025em] text-navy">Sign in</h1>
       <p className="mt-2 text-[15px] text-secondary">Welcome back. Sign in with the account your admin gave you.</p>
 
-      <div className="mt-8 space-y-4">
+      <div className="mt-8 space-y-4 [@media(max-height:700px)]:mt-5">
         {notice && !error && (
           <div role="status" className="flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-body-lg text-amber-900">
             <Icon name="schedule" className="mt-px !text-[18px]" fill />
@@ -127,7 +127,7 @@ export default function LoginForm({ notice }: { notice?: string }) {
         )}
       </button>
 
-      <div className="mt-8 rounded-xl bg-surface-container-low px-4 py-3.5 text-body-lg text-secondary">
+      <div className="mt-8 rounded-xl bg-surface-container-low [@media(max-height:700px)]:mt-5 px-4 py-3.5 text-body-lg text-secondary">
         <span className="flex items-start gap-2.5">
           <Icon name="support_agent" className="mt-px !text-[20px] text-primary" />
           <span>
